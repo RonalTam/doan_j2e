@@ -1,0 +1,20 @@
+#prodetails .small-img {
+    width: 100px;
+    cursor: pointer;
+    transition: border 0.3s ease;
+}
+
+#prodetails .small-img:hover {
+    border: 2px solid #007bff;
+}
+
+.product-item:hover {
+    transform: translateY(-3px);
+    transition: transform 0.3s ease;
+}
+
+.product-thumbnail {
+    object-fit: cover;
+    height: 200px;
+    width: 100%;
+}
