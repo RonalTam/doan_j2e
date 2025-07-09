@@ -29,8 +29,14 @@ public interface ProductDao {
     public List<Product> filter(int categoryId, String propertyName, String order);
 
     public List<Product> relatedProductList(Product product);
-    
-    public List<Product> getProducts(int from, int amount);
+
+    public List<Product> getProducts(int offset, int limit);
+
+    public int countAll();
+
+    public int countByCategory(int categoryId);
+
+    public List<Product> getProductsByCategory(int categoryId, int offset, int limit);
     
     public boolean updateView(Product product);
 

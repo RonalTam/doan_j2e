@@ -316,7 +316,7 @@ a {
   .we-help-section .imgs-grid {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (1fr)[27];
+    /*-ms-grid-columns: (1fr)[27];*/
     grid-template-columns: repeat(27, 1fr);
     position: relative; }
     .we-help-section .imgs-grid:before {
@@ -710,3 +710,183 @@ textarea {
     border-radius: 50%;
     background: rgba(59, 93, 80, 0.2); }
 
+/*Cart*/
+.section-p1 {
+  padding: 3rem 0;
+}
+
+#cart table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+}
+
+#cart thead tr {
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  color: white;
+  font-weight: 500;
+}
+
+#cart thead td {
+  padding: 1.5rem 1rem;
+  text-align: left;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+#cart tbody tr {
+  border-bottom: 1px solid #e9ecef;
+  transition: background-color 0.2s ease;
+}
+
+#cart tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+#cart tbody td {
+  padding: 1rem;
+  vertical-align: middle;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+#cart tbody td img {
+  width: 80px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+#cart tbody td img:hover {
+  transform: scale(1.05);
+}
+
+#cart tbody td form button.fa-circle-xmark {
+  background: none;
+  border: none;
+  color: #dc3545;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+#cart tbody td form button.fa-circle-xmark:hover {
+  color: #b02a37;
+  transform: scale(1.1);
+}
+
+#cart tbody td input[type="number"] {
+  width: 60px;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease;
+}
+
+#cart tbody td input[type="number"]:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+#cart tbody td:last-child {
+  font-weight: 500;
+  color: #007bff;
+}
+
+@media (max-width: 768px) {
+  #cart table {
+    font-size: 0.85rem;
+  }
+
+  #cart thead td {
+    padding: 1rem 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  #cart tbody td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  #cart tbody td img {
+    width: 60px;
+  }
+
+  #cart tbody td input[type="number"] {
+    width: 50px;
+  }
+}
+/*End cart*/
+
+/*pagination*/
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px; /* khoảng cách giữa các nút */
+  flex-wrap: wrap;
+}
+
+.page-item {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid #aaa;
+  border-radius: 20px;
+  background-color: transparent;
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.page-item:hover {
+  background-color: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.active-page {
+  background-color: #000;
+  color: white;
+  border-color: #000;
+  font-weight: bold;
+}
+/*end pagination*/
+
+/*Search*/
+.custom-input, .custom-select {
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.custom-input:focus, .custom-select:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 0.15rem rgba(0, 0, 0, 0.15);
+  outline: none;
+}
+/*endsearch*/
+
+/*user-menu*/
+.user-menu .dropdown-toggle {
+  color: white;
+  font-size: 20px;
+  padding: 8px;
+}
+
+.user-menu .dropdown-menu {
+  min-width: 150px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+/*end usermenu*/

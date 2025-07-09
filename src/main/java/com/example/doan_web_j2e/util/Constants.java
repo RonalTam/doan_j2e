@@ -5,7 +5,7 @@ public class Constants {
 	public static final String USER = "root";
 	public static final String PASS = "";
 	
-	public static final int RELATED_NUMBER = 8;
+	public static final int RELATED_NUMBER = 4;
 	public static final int NUMBER_LIMIT = 3;
                 
 	public static final int PER_PAGE = 12;

@@ -28,6 +28,7 @@
           crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="assets/css/tiny-slider.css" rel="stylesheet">
+
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/product.css" rel="stylesheet">
     <title>Furni</title>
@@ -40,18 +41,20 @@
 <!-- End Header/Navigation -->
 
 <!-- Start Product Details Section -->
-<section id="prodetails" class="section-p1 mt-5 mb-3">
+<section id="prodetails" class="section-p1 my-2">
     <div class="container">
+        <small class="text-muted"><a href="index.jsp">Home</a> / ${product.name}</small>
+        <h2 class="text-sm-start my-3">Product Details</h2>
         <div class="row align-items-start g-5">
             <!-- Product Images -->
             <div class="col-md-6" style="min-height: 650px">
                 <div class="single-pro-img bg-white p-3 rounded shadow-sm">
                     <img src="${product.thumbnail}" alt="Main Product Image" id="MainImg" class="img-fluid rounded mb-3">
                     <div class="d-flex gap-2 justify-content-between small-img-group">
-                        <img src="assets/images/product-1.png" alt="Thumbnail 1" class="small-img img-thumbnail rounded">
-                        <img src="assets/images/product-2.png" alt="Thumbnail 2" class="small-img img-thumbnail rounded">
-                        <img src="assets/images/product-3.png" alt="Thumbnail 3" class="small-img img-thumbnail rounded">
-                        <img src="assets/images/sofa.png" alt="Thumbnail 4" class="small-img img-thumbnail rounded">
+                        <img src="assets/images/product-1.png" alt="Thumbnail 1" class="small-img img-thumbnail rounded" style="height: 100px">
+                        <img src="assets/images/product-2.png" alt="Thumbnail 2" class="small-img img-thumbnail rounded" style="height: 100px">
+                        <img src="assets/images/product-3.png" alt="Thumbnail 3" class="small-img img-thumbnail rounded" style="height: 100px">
+                        <img src="assets/images/sofa.png" alt="Thumbnail 4" class="small-img img-thumbnail rounded" style="height: 100px">
                     </div>
                 </div>
             </div>
@@ -63,7 +66,6 @@
                     <input type="hidden" name="productId" value="${product.id}" />
                     <input type="hidden" name="price" value="${product.price}" />
 
-                    <small class="text-muted">Home / T-Shirt</small>
                     <h2 class="fw-bold mt-2">${product.name}</h2>
                     <h3 class="text-primary fw-semibold mb-3">$${product.price}</h3>
 
@@ -85,7 +87,7 @@
 </section>
 
 <!-- Related Products -->
-<section id="product1" class="section-p1" style="margin-bottom: 170px; margin-top: 20px">
+<section id="product1" class="section-p1" style="margin-bottom: 170px; margin-top: 20px; background-color: #dce5e4">
     <div class="container">
         <h2 class="text-center my-4">Related Products</h2>
         <div class="row gy-4">

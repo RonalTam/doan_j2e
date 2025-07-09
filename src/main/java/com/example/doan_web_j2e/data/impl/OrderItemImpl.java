@@ -17,7 +17,7 @@ public class OrderItemImpl implements OrderItemDao {
 	@Override
 	public boolean insert(OrderItem orderItem) {
 		// TODO Auto-generated method stub
-		String sql = "INSERT INTO ORDER_ITEMS(ID, QUANTITY, PRICE, ORDER_ID, PRODUCT_ID) VALUES(NULL, ?, ?, ?, ?)";
+		String sql = "INSERT INTO ORDER_ITEMS(ID, QUANTITY, PRICE, ORDERID, PRODUCTID) VALUES(NULL, ?, ?, ?, ?)";
 		try {
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setInt(1, orderItem.getQuantity());
@@ -36,7 +36,7 @@ public class OrderItemImpl implements OrderItemDao {
 	@Override
 	public boolean update(OrderItem orderItem) {
 		// TODO Auto-generated method stub
-		String sql = "UPDATE ORDER_ITEMS SET quantity = ?, price = ?, order_id = ?, product_id = ? WHERE id = ?";
+		String sql = "UPDATE ORDER_ITEMS SET quantity = ?, price = ?, orderid = ?, productid = ? WHERE id = ?";
 		try {
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setInt(1,orderItem.getQuantity());
@@ -78,8 +78,8 @@ public class OrderItemImpl implements OrderItemDao {
 			while (rs.next()) {
 				int quantity = rs.getInt("quantity");
 				double price = rs.getDouble("price");
-				int orderId = rs.getInt("order_id");
-				int productId = rs.getInt("product_id");
+				int orderId = rs.getInt("orderid");
+				int productId = rs.getInt("productid");
 				
 				return new OrderItem(quantity, price, orderId, productId);
 			}
@@ -103,8 +103,8 @@ public class OrderItemImpl implements OrderItemDao {
 				int id = rs.getInt("id");
 				int quantity = rs.getInt("quantity");
 				double price = rs.getDouble("price");
-				int orderId = rs.getInt("order_id");
-				int productId = rs.getInt("product_id");
+				int orderId = rs.getInt("orderid");
+				int productId = rs.getInt("productid");
 				
 				orList.add(new OrderItem(quantity, price, orderId, productId));
 			}
@@ -118,7 +118,7 @@ public class OrderItemImpl implements OrderItemDao {
 	@Override
 	public List<OrderItem> findByOder(int orderId) {
 	List<OrderItem> orderItemList = new ArrayList<>();
-        String sql = "SELECT * FROM ORDER_ITEMS WHERE order_id = ?";
+        String sql = "SELECT * FROM ORDER_ITEMS WHERE orderid = ?";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, orderId);
@@ -128,7 +128,7 @@ public class OrderItemImpl implements OrderItemDao {
                 int id = rs.getInt("id");
                 int quantity = rs.getInt("quantity");
                 double price = rs.getDouble("price");
-                int productId = rs.getInt("product_id");
+                int productId = rs.getInt("productid");
                 orderItemList.add( new OrderItem(id, quantity, price, orderId, productId));
             }
         } catch (SQLException e) {

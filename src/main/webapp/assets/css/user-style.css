@@ -1,0 +1,136 @@
+/*
+* Template Name: UntreeStore
+* Template Author: Untree.co
+* Author URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+/* User */
+/* Phần bọc form */
+#container-bg {
+    min-height: 100vh;
+    background-image: url("../images/banner/bg.jpg");
+    background-size: cover;       /* Phủ kín */
+    background-position: center;  /* Căn giữa */
+    background-repeat: no-repeat; /* Không lặp lại */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px; /* khoảng cách giữa login và register */
+    flex-wrap: wrap;
+    padding: 40px 15px;
+    padding-bottom: 150px;
+}
+#wrapper {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.9); /* Lớp nền trắng trong suốt */
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Khung form */
+.form-box h1 {
+    text-align: center;
+    margin-bottom: 24px;
+    color: #333;
+}
+
+/* Ô input */
+.input-box {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 12px 40px 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-box input:focus {
+    border-color: #2575fc;
+}
+
+/* Icon */
+.input-box i {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+/* Ghi nhớ mật khẩu & quên */
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.remember-forgot label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #444;
+}
+
+.remember-forgot a {
+    color: #2575fc;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+/* Nút login/register */
+button.normal {
+    width: 100%;
+    padding: 12px;
+    background: #2575fc;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button.normal:hover {
+    background: #1a5ed9;
+}
+
+/* Đường dẫn đăng ký / đăng nhập */
+.register-link {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.register-link a {
+    color: #2575fc;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Hiển thị lỗi */
+.error {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 12px;
+}
+/* End User */

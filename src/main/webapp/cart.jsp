@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%-- Định dạng số tiền với 2 chữ số thập phân, kiểu tiền tệ USD --%>
+<fmt:formatNumber value="${price}" type="currency" currencySymbol="$" />
 <!doctype html>
 <html lang="en">
 <head>
@@ -61,54 +63,29 @@
                             <th class="product-remove">Remove</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <td class="product-thumbnail">
-                                <img src="images/product-1.png" alt="Image" class="img-fluid">
-                            </td>
-                            <td class="product-name">
-                                <h2 class="h5 text-black">Product 1</h2>
-                            </td>
-                            <td>$49.00</td>
-                            <td>
-                                <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-outline-black decrease" type="button">&minus;</button>
-                                    </div>
-                                    <input type="text" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-black increase" type="button">&plus;</button>
-                                    </div>
-                                </div>
+                        <tbody style="background-color: beige">
+                        <c:forEach items="${cart}" var="orderItem">
+                            <tr>
+                                <td><img src="${orderItem.product.thumbnail}" class="img-thumbnail" alt=""></td>
+                                <td>${orderItem.product.name}</td>
+                                <td><fmt:formatNumber value="${orderItem.price}" type="currency" currencySymbol="$" maxFractionDigits="0" /></td>                                <td>
+                                <td>
+                                    <form action="CartServlet" method="post">
+                                        <input type="hidden" name="action" value="update"/>
+                                        <input type="hidden" name="productId" value="${orderItem.productId}"/>
+                                        <input onchange="this.form.submit()" name="quantity" type="number" value="${orderItem.quantity}" min="1">
 
-                            </td>
-                            <td>$49.00</td>
-                            <td><a href="#" class="btn btn-black btn-sm">X</a></td>
-                        </tr>
-
-                        <tr>
-                            <td class="product-thumbnail">
-                                <img src="images/product-2.png" alt="Image" class="img-fluid">
-                            </td>
-                            <td class="product-name">
-                                <h2 class="h5 text-black">Product 2</h2>
-                            </td>
-                            <td>$49.00</td>
-                            <td>
-                                <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-outline-black decrease" type="button">&minus;</button>
-                                    </div>
-                                    <input type="text" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-black increase" type="button">&plus;</button>
-                                    </div>
-                                </div>
-
-                            </td>
-                            <td>$49.00</td>
-                            <td><a href="#" class="btn btn-black btn-sm">X</a></td>
-                        </tr>
+                                    </form>
+                                </td>
+                                <td><fmt:formatNumber value="${orderItem.price * orderItem.quantity}" type="currency" currencySymbol="$" maxFractionDigits="0" /></td>                                <td>
+                                    <form action="CartServlet" method="post">
+                                        <input type="hidden" name="action" value="delete"/>
+                                        <input type="hidden" name="productId" value="${orderItem.productId}"/>
+                                        <button type="submit" class="btn btn-black btn-sm">X</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
@@ -122,7 +99,7 @@
                         <button class="btn btn-black btn-sm btn-block">Update Cart</button>
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-outline-black btn-sm btn-block">Continue Shopping</button>
+                        <a href="index.jsp"><button class="btn btn-outline-black btn-sm btn-block">Continue Shopping</button></a>
                     </div>
                 </div>
                 <div class="row">
@@ -165,7 +142,7 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='checkout.html'">Proceed To Checkout</button>
+                                <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='CheckoutServlet'">Proceed To Checkout</button>
                             </div>
                         </div>
                     </div>

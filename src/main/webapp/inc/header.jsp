@@ -22,23 +22,37 @@
                 <li class="nav-item <%= uri.contains("ShopServlet") ? "active" : "" %>">
                     <a class="nav-link" href="ShopServlet">Shop</a>
                 </li>
-                <li class="nav-item <%= uri.endsWith("about.html") ? "active" : "" %>">
-                    <a class="nav-link" href="about.html">About us</a>
+                <li class="nav-item <%= uri.endsWith("AboutServlet") ? "active" : "" %>">
+                    <a class="nav-link" href="AboutServlet">About us</a>
                 </li>
-                <li class="nav-item <%= uri.endsWith("services.html") ? "active" : "" %>">
-                    <a class="nav-link" href="services.html">Services</a>
+                <li class="nav-item <%= uri.endsWith("ServiceServlet") ? "active" : "" %>">
+                    <a class="nav-link" href="ServiceServlet">Services</a>
                 </li>
-                <li class="nav-item <%= uri.endsWith("blog.html") ? "active" : "" %>">
-                    <a class="nav-link" href="blog.html">Blog</a>
+                <li class="nav-item <%= uri.endsWith("BlogServlet") ? "active" : "" %>">
+                    <a class="nav-link" href="BlogServlet">Blog</a>
                 </li>
-                <li class="nav-item <%= uri.endsWith("contact.html") ? "active" : "" %>">
-                    <a class="nav-link" href="contact.html">Contact us</a>
+                <li class="nav-item <%= uri.endsWith("ContactServlet") ? "active" : "" %>">
+                    <a class="nav-link" href="ContactServlet">Contact us</a>
                 </li>
             </ul>
 
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                <li><a class="nav-link" href="#"><img src="assets/images/user.svg"></a></li>
                 <li><a class="nav-link" href="CartServlet"><img src="assets/images/cart.svg"></a></li>
+                <li class="nav-item dropdown user-menu">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <c:if test="${sessionScope.user == null}">
+                            <li><a class="dropdown-item" href="LoginServlet">Login</a></li>
+                            <li><a class="dropdown-item" href="RegisterServlet">Register</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.user != null}">
+                            <li><a class="dropdown-item" href="ProfileServlet">Xem hồ sơ</a></li>
+                            <li><a class="dropdown-item" href="LogoutServlet">Logout</a></li>
+                        </c:if>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

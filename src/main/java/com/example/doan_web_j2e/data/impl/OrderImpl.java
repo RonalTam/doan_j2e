@@ -16,7 +16,7 @@ public class OrderImpl implements OrderDao {
 
     @Override
     public boolean insert(Order order) {
-        String sql = "INSERT INTO ORDERS(ID, CODE, STATUS, USER_ID) VALUES(NULL, ?, ?, ?)";
+        String sql = "INSERT INTO ORDERS(ID, CODE, STATUS, USERID) VALUES(NULL, ?, ?, ?)";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, order.getCode());
@@ -33,7 +33,7 @@ public class OrderImpl implements OrderDao {
 
     @Override
     public boolean update(Order order) {
-        String sql = "UPDATE ORDERS SET code = ?, status = ?, user_id = ?, created_at = ? WHERE id = ?";
+        String sql = "UPDATE ORDERS SET code = ?, status = ?, userid = ?, createdat = ? WHERE id = ?";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, order.getCode());
@@ -100,10 +100,10 @@ public class OrderImpl implements OrderDao {
                 int id = rs.getInt("id");
                 String code = rs.getString("code");
                 String status = rs.getString("status");
-                int userId = rs.getInt("user_id");
-                Timestamp created_at = rs.getTimestamp("created_at");
+                int userId = rs.getInt("userid");
+                Timestamp createdAt = rs.getTimestamp("createdat");
 
-                orders.add(new Order(id, code, status, userId, created_at));
+                orders.add(new Order(id, code, status, userId, createdAt));
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -115,7 +115,7 @@ public class OrderImpl implements OrderDao {
     @Override
     public List<Order> findByUser(int userId) {
         List<Order> orderList = new ArrayList<>();
-        String sql = "SELECT * FROM ORDERS WHERE user_id = ?";
+        String sql = "SELECT * FROM ORDERS WHERE userid = ?";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, userId);
@@ -125,7 +125,7 @@ public class OrderImpl implements OrderDao {
                 int id = rs.getInt("id");
                 String code = rs.getString("code");
                 String status = rs.getString("status");
-                Timestamp createdAt = rs.getTimestamp("created_at");
+                Timestamp createdAt = rs.getTimestamp("createdat");
 
                 orderList.add(new Order(id, code, status, userId, createdAt));
             }
@@ -147,8 +147,8 @@ public class OrderImpl implements OrderDao {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String code = rs.getString("code");
-                int userId = rs.getInt("user_id");
-                Timestamp createdAt = rs.getTimestamp("created_at");
+                int userId = rs.getInt("userid");
+                Timestamp createdAt = rs.getTimestamp("createdat");
                 orderList.add(new Order(id, code, status, userId, createdAt));
             }
         } catch (SQLException ex) {
@@ -168,8 +168,8 @@ public class OrderImpl implements OrderDao {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String status = rs.getString("status");
-                int userId = rs.getInt("user_id");
-                Timestamp createdAt = rs.getTimestamp("created_at");
+                int userId = rs.getInt("userid");
+                Timestamp createdAt = rs.getTimestamp("createdat");
 
                 return new Order(id, code, status, userId, createdAt);
             }
@@ -183,7 +183,7 @@ public class OrderImpl implements OrderDao {
     @Override
     public int countOrderByDay(String date) {
         int count = 0;
-        String sql = "SELECT COUNT(*) AS count FROM orders where date(created_at)=?";
+        String sql = "SELECT COUNT(*) AS count FROM orders where date(createdat)=?";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, date);
@@ -200,7 +200,7 @@ public class OrderImpl implements OrderDao {
     @Override
     public double earningOrderByDay(String date) {
         double total = 0;
-        String sql = "SELECT * FROM orders where date(created_at)=?";
+        String sql = "SELECT * FROM orders where date(createdat)=?";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, date);
@@ -209,8 +209,8 @@ public class OrderImpl implements OrderDao {
                 int id = rs.getInt("id");
                 String code = rs.getString("code");
                 String status = rs.getString("status");
-                int userId = rs.getInt("user_id");
-                Timestamp createdAt = rs.getTimestamp("created_at");
+                int userId = rs.getInt("userid");
+                Timestamp createdAt = rs.getTimestamp("createdat");
 
                 Order order = new Order(id, code, status, userId, createdAt);
 //				total += order.getTotal();
