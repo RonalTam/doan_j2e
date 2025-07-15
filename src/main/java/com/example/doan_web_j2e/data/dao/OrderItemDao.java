@@ -20,4 +20,6 @@ public interface OrderItemDao {
 
     public List<OrderItem> findByProduct(int id);
 
+    public List<OrderItem> findByOrderId(int orderId);
+
 }

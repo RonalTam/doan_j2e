@@ -8,6 +8,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<fmt:formatNumber value="${price}" type="currency" currencySymbol="$" />
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -67,7 +70,7 @@
                     <input type="hidden" name="price" value="${product.price}" />
 
                     <h2 class="fw-bold mt-2">${product.name}</h2>
-                    <h3 class="text-primary fw-semibold mb-3">$${product.price}</h3>
+                    <h3 class="text-primary fw-semibold mb-3"><fmt:formatNumber value="${product.price}" type="currency" currencySymbol="VND" maxFractionDigits="0" /></h3>
 
                     <div class="mb-3">
                         <label for="quantity" class="form-label fw-medium">Quantity</label>

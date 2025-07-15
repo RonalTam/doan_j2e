@@ -123,12 +123,21 @@
                                 <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
                             </div>
                         </div>
+                        <c:set var="total" value="0" />
+                        <c:forEach items="${cart}" var="orderItem">
+                            <c:set var="subtotal" value="${orderItem.quantity * orderItem.price}" />
+                            <c:set var="total" value="${total + subtotal}" />
+                        </c:forEach>
+
+                        <!-- ✅ Hiển thị chỉ MỘT lần sau khi tính xong -->
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <span class="text-black">Subtotal</span>
                             </div>
                             <div class="col-md-6 text-right">
-                                <strong class="text-black">$230.00</strong>
+                                <strong class="text-black">
+                                    <fmt:formatNumber value="${total}" type="currency" currencySymbol="VND" maxFractionDigits="0"/>
+                                </strong>
                             </div>
                         </div>
                         <div class="row mb-5">
@@ -136,7 +145,9 @@
                                 <span class="text-black">Total</span>
                             </div>
                             <div class="col-md-6 text-right">
-                                <strong class="text-black">$230.00</strong>
+                                <strong class="text-black">
+                                    <fmt:formatNumber value="${total}" type="currency" currencySymbol="VND" maxFractionDigits="0"/>
+                                </strong>
                             </div>
                         </div>
 

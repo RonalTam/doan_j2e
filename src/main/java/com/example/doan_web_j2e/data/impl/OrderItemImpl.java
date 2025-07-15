@@ -144,4 +144,30 @@ public class OrderItemImpl implements OrderItemDao {
 		return null;
 	}
 
+	@Override
+	public List<OrderItem> findByOrderId(int orderId) {
+		List<OrderItem> items = new ArrayList<>();
+		String sql = "SELECT * FROM ORDER_ITEMS WHERE orderid = ?";
+
+		try (PreparedStatement stmt = con.prepareStatement(sql)) {
+			stmt.setInt(1, orderId);
+			ResultSet rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				int id        = rs.getInt("id");
+				int quantity  = rs.getInt("quantity");
+				double price  = rs.getDouble("price");
+				int productId = rs.getInt("productid");
+
+				// dùng constructor như bạn viết
+				items.add(new OrderItem(id, quantity, price, orderId, productId));
+				// (orderId ở đây là biến method – đã đúng giá trị)
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return items;
+	}
+
 }

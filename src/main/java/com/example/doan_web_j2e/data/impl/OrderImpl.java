@@ -41,7 +41,7 @@ public class OrderImpl implements OrderDao {
             stmt.setInt(3, order.getUserId());
             stmt.setTimestamp(4, order.getCreatedAt());
             stmt.setInt(5, order.getId());
-            return stmt.execute();
+            return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -75,10 +75,10 @@ public class OrderImpl implements OrderDao {
             while (rs.next()) {
                 String code = rs.getString("code");
                 String status = rs.getString("status");
-                int userId = rs.getInt("user_id");
-                Timestamp created_at = rs.getTimestamp("created_at");
+                int userId = rs.getInt("userId");
+                Timestamp createdAt = rs.getTimestamp("createdAt");
 
-                return new Order(id, code, status, userId, created_at);
+                return new Order(id, code, status, userId, createdAt);
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block

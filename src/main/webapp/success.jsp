@@ -43,7 +43,7 @@
         title: 'success!',
         text: '${message}', // thông báo từ servlet
         showConfirmButton: false,
-        timer: 3000,
+        timer: 900,
         timerProgressBar: true,
         background: '#ffffff',
         color: '#333',

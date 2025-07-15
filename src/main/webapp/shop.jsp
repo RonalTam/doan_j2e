@@ -1,6 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<fmt:formatNumber value="${price}" type="currency" currencySymbol="$" />
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -85,7 +88,7 @@
                     <a class="product-item" href="ProductServlet?productId=${product.id}">
                         <img src="${product.thumbnail}" class="img-fluid product-thumbnail">
                         <h3 class="product-title">${product.name}</h3>
-                        <strong class="product-price">$${product.price}</strong>
+                        <strong class="product-price"><fmt:formatNumber value="${product.price}" type="currency" currencySymbol="VND" maxFractionDigits="0" /></strong>
 
                         <span class="icon-cross">
 								<img src="assets/images/cross.svg" class="img-fluid">
