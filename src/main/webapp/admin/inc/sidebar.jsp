@@ -49,6 +49,11 @@
                     <a href="IndexOrderServlet" class="dropdown-item">All</a>
                 </div>
             </div>
+            <div class="nav-item dropdown">
+                <a href="HomeServlet" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-chart-bar me-2"></i>Back home</a>
+                <div class="dropdown-menu bg-transparent border-0">
+                </div>
+            </div>
         </div>
     </nav>
 </div>

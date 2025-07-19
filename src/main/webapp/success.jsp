@@ -37,13 +37,14 @@
 <body>
 <div class="fade-overlay"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     Swal.fire({
         icon: 'success',
-        title: 'success!',
-        text: '${message}', // thông báo từ servlet
+        title: 'Thành công!',
+        text: '${message}',
         showConfirmButton: false,
-        timer: 900,
+        timer: 1100,
         timerProgressBar: true,
         background: '#ffffff',
         color: '#333',
@@ -53,7 +54,12 @@
             content: 'swal2-text-custom'
         },
         didClose: () => {
-            window.location.href = '${redirect}';
+            const redirect = '${redirect}';
+            if (redirect === 'DashboardServlet') {
+                window.open(redirect, '_blank');
+            } else {
+                window.location.href = redirect;
+            }
         }
     });
 </script>

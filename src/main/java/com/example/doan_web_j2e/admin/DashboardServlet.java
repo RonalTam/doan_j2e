@@ -7,10 +7,13 @@ package com.example.doan_web_j2e.admin;
 import com.example.doan_web_j2e.data.dao.DatabaseDao;
 import com.example.doan_web_j2e.data.dao.OrderDao;
 import com.example.doan_web_j2e.data.model.Order;
+import com.example.doan_web_j2e.data.model.User;
 import com.example.doan_web_j2e.util.GetDateTime;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -26,6 +29,22 @@ public class DashboardServlet extends BaseAdminServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession(false); // false: không tạo mới session nếu chưa có
+
+        // Kiểm tra xem người dùng đã đăng nhập chưa
+        if (session == null || session.getAttribute("user") == null) {
+            // Chưa đăng nhập → chuyển hướng về Login
+            response.sendRedirect("LoginServlet");
+            return;
+        }
+        User user = (User) session.getAttribute("user");
+
+        // (Tùy chọn) kiểm tra vai trò nếu muốn chỉ admin vào
+        if (!user.getRole().equals("admin")) {
+            response.sendRedirect("index.jsp"); // không phải admin thì về trang chính
+            return;
+        }
+
         OrderDao orderDao = DatabaseDao.getInstance().getOrderDao();
         
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");

@@ -153,7 +153,14 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='CheckoutServlet'">Proceed To Checkout</button>
+                                <c:choose>
+                                    <c:when test="${not empty sessionScope.cart}">
+                                        <a href="CheckoutServlet" class="btn btn-black btn-lg py-3 btn-block">Proceed To Checkout</a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <button class="btn btn-secondary btn-lg py-3 btn-block" disabled>Giỏ hàng trống</button>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                         </div>
                     </div>

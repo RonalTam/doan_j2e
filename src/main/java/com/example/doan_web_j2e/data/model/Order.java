@@ -11,24 +11,36 @@ public class Order {
     private String status;
     private int userId;
     private Timestamp createdAt;
+    private String fullname;
+    private String phone;
+    private String email;
+    private String address;
 
     public static final String PENDING = "pending";
     public static final String FINISHED = "finish";
 
-    public Order(String code, String status, int userId) {
+    public Order(String code, String status, int userId, String fullname, String phone, String email, String address) {
         super();
         this.code = code;
         this.status = status;
         this.userId = userId;
+        this.fullname = fullname;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
     }
 
-    public Order(int id, String code, String status, int userId, Timestamp createdAt) {
+    public Order(int id, String code, String status, int userId, Timestamp createdAt, String fullname, String phone, String email, String address) {
         super();
         this.id = id;
         this.code = code;
         this.status = status;
         this.userId = userId;
         this.createdAt = createdAt;
+        this.fullname = fullname;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
     }
 
     public int getId() {
@@ -70,7 +82,39 @@ public class Order {
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
-    
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public User getUser(){
         return DatabaseDao.getInstance().getUserDao().find(this.userId);
     }
