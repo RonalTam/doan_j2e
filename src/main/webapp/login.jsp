@@ -44,6 +44,11 @@
                             <a href="#">Forgot Password</a>
                         </div>
                         <button type="submit" class="normal">Login</button>
+                        <p style="text-align: end; margin-top: 15px">
+                        <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile&redirect_uri=http://localhost:8080/doan_web_j2e_war_exploded/LoginGoogleHandler&response_type=code&client_id=402368277332-1hbu7sh1jodol11pili71ec7psf6qh1j.apps.googleusercontent.com&approval_prompt=force">
+                            <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png" />
+                        </a>
+                        </p>
                         <div class="register-link">
                             <p>Dont have an Account? <a href="RegisterServlet">Register</a></p>
                         </div>

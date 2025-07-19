@@ -35,6 +35,14 @@ public class RegisterServlet extends BaseServlet {
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmPassword");
 
+// Kiểm tra độ dài mật khẩu
+        if (password == null || password.length() <= 7) {
+            session.setAttribute("error", "Password must be more than 7 characters");
+            request.getRequestDispatcher("register.jsp").forward(request, response);
+            return;
+        }
+
+// Kiểm tra xác nhận mật khẩu
         if (!password.equals(confirmPassword)) {
             session.setAttribute("error", "Passwords do not match");
             request.getRequestDispatcher("register.jsp").forward(request, response);
